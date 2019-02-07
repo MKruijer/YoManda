@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		{
 		theRB.velocity = new Vector3(Input.GetAxis("Horizontal") * MovementSpeed, theRB.velocity.y, Input.GetAxis("Vertical") * MovementSpeed);
 
 		if(Input.GetButtonDown("Jump"))
@@ -22,4 +23,5 @@ public class PlayerMovement : MonoBehaviour {
 			theRB.velocity = new Vector3(theRB.velocity.x, jumpForce, theRB.velocity.z);
 		}
 	}
+}
 }

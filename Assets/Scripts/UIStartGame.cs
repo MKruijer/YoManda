@@ -5,12 +5,11 @@ using UnityEngine;
 public class UIStartGame : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-		
-	}
+	public Camera HomeScreenCamera;
+	public Camera firstPersonCamera;
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public void ShowFirstPersonView() {
+        firstPersonCamera.enabled = false;
+        HomeScreenCamera.enabled = false;
+    }
 }
