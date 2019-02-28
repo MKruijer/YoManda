@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/HomeScreen.unity
+    guid: f8ace0364e0f1354595e0eab9913f479
+  - enabled: 1
+    path: Assets/Scenes/LevelUno.unity
+    guid: d14f82bc0311b754f9ae6537de17957d
+  - enabled: 1
+    path: Assets/Scenes/YoManda.unity
+    guid: 9ff121565b08bab439aa30ac3f5afb7b
