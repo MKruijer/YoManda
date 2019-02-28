@@ -5,23 +5,36 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	public float MovementSpeed;
-	public Rigidbody theRB;
+	//public Rigidbody theRB;
 	public float jumpForce;
+	public CharacterController controller;
+
+	private Vector3 moveDirection;
+	public float gravityScale;
 
 	// Use this for initialization
 	void Start () {
-		theRB = GetComponent<Rigidbody>();
+		//theRB = GetComponent<Rigidbody>();
+		controller = GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		{
-		theRB.velocity = new Vector3(Input.GetAxis("Horizontal") * MovementSpeed, theRB.velocity.y, Input.GetAxis("Vertical") * MovementSpeed);
+		
+		moveDirection = new Vector3(Input.GetAxis("Horizontal") * MovementSpeed, moveDirection.y, Input.GetAxis("Vertical") * MovementSpeed);
 
-		if(Input.GetButtonDown("Jump"))
+		if(controller.isGrounded)	//zorgt ervoor dat je niet oneindig kan springen maar 1x totdat je weer de grond aanraakt.
 		{
-			theRB.velocity = new Vector3(theRB.velocity.x, jumpForce, theRB.velocity.z);
+			if(Input.GetButtonDown("Jump"))
+		{
+			moveDirection.y = jumpForce;
 		}
-	}
+		}
+
+		
+
+		moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+		controller.Move(moveDirection * Time.deltaTime);
+	
 }
 }
