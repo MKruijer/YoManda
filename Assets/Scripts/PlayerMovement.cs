@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
 		//moveDirection = new Vector3(Input.GetAxis("Horizontal") * MovementSpeed, moveDirection.y, Input.GetAxis("Vertical") * MovementSpeed);
 		float yStore = moveDirection.y;
 		moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
-		moveDirection = moveDirection.normalized * MovementSpeed;
+		moveDirection = moveDirection * MovementSpeed;
 		moveDirection.y = yStore;
 
 		if(controller.isGrounded)	//zorgt ervoor dat je niet oneindig kan springen maar 1x totdat je weer de grond aanraakt.
@@ -40,6 +40,6 @@ public class PlayerMovement : MonoBehaviour {
 
 		moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
 		controller.Move(moveDirection * Time.deltaTime);
-	
+	//.normalized	
 }
 }
