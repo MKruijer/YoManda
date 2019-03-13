@@ -20,9 +20,11 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//moveDirection.y = moveDirection.y - (Physics.gravity.y * Time.deltaTime);
+		moveDirection.y = moveDirection.y + (Physics.gravity.y * Time.deltaTime);
+		controller.Move(moveDirection * Time.deltaTime);
 		moveDirection = new Vector3(Input.GetAxis("Horizontal") * MovementSpeed, moveDirection.y, Input.GetAxis("Vertical") * MovementSpeed);
-
+		Debug.Log(moveDirection.y);
 		if(controller.isGrounded)	//zorgt ervoor dat je niet oneindig kan springen maar 1x totdat je weer de grond aanraakt.
 		{
 			if(Input.GetButtonDown("Jump"))
@@ -33,8 +35,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		
 
-		moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
-		controller.Move(moveDirection * Time.deltaTime);
+		
 	
 }
 }
