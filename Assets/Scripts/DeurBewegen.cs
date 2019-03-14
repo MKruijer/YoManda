@@ -6,20 +6,23 @@ public class DeurBewegen : MonoBehaviour {
 
 GameObject player;
 public int DeurMoetOpen = 0;
-public int DeurX1;
-public int DeurX2;
+public int DeurXOpen;
+public int DeurXDicht;
+public string DeurXRichting;
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Player");
 		if(GameObject.Find("Door_5") == gameObject)
 		{
-			DeurX1 = 143;
-			DeurX2 = 153;
+			DeurXRichting = "Plus";
+			DeurXOpen = 153;
+			DeurXDicht = 143;
 		}
 		if(GameObject.Find("Door_6") == gameObject)
 		{
-			DeurX1 = 110;
-			DeurX2 = 119;
+			DeurXRichting = "Min";
+			DeurXOpen = 110;
+			DeurXDicht = 119;
 		}
 	}
 	
@@ -36,17 +39,24 @@ public int DeurX2;
 
 		if(DeurMoetOpen == 1)
 		{
-			DeurOpen(DeurX1);
+			DeurOpen(DeurXOpen);
 		}
 		if(DeurMoetOpen == 0)
 		{
-			DeurDicht(DeurX2);
+			DeurDicht(DeurXDicht);
 		}
 	}
 
-	public void DeurOpen(int DeurX1)
+	public void DeurOpen(int DeurXOpen)
 	{
-		if(gameObject.transform.position.x > DeurX1)
+		if(gameObject.transform.position.x < DeurXOpen && DeurXRichting == "Plus")
+		{
+		Vector3 tempPlekkie = transform.position;
+		tempPlekkie.x++;
+		transform.position = tempPlekkie;
+		}
+
+		if(gameObject.transform.position.x > DeurXOpen && DeurXRichting == "Min")
 		{
 		Vector3 tempPlekkie = transform.position;
 		tempPlekkie.x--;
@@ -54,12 +64,19 @@ public int DeurX2;
 		}
 	}
 
-	public void DeurDicht(int DeurX2)
+	public void DeurDicht(int DeurXDicht)
 	{
-		if(gameObject.transform.position.x < DeurX2)
+		if(gameObject.transform.position.x < DeurXDicht && DeurXRichting == "Min" )
 		{
 		Vector3 tempPlekkie = transform.position;
 		tempPlekkie.x++;
+		transform.position = tempPlekkie;
+		}
+
+		if(gameObject.transform.position.x > DeurXDicht && DeurXRichting == "Plus")
+		{
+		Vector3 tempPlekkie = transform.position;
+		tempPlekkie.x--;
 		transform.position = tempPlekkie;
 		}
 	}
