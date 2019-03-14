@@ -25,14 +25,14 @@ public class CameraFollow : MonoBehaviour {
 
 
 
-	// Use this for initialization
-	void Start () {
-		Vector3 rot = transform.localRotation.eulerAngles;
+    // Use this for initialization
+    void Start () {
+        Vector3 rot = transform.localRotation.eulerAngles;
 		rotY = rot.y;
 		rotX = rot.x;
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -52,6 +52,7 @@ public class CameraFollow : MonoBehaviour {
 
 		Quaternion localRotation = Quaternion.Euler (rotX, rotY, 0.0f);
 		transform.rotation = localRotation;
+        GameObject.Find("Player").transform.rotation = localRotation;
 
 
 	}
@@ -67,5 +68,6 @@ public class CameraFollow : MonoBehaviour {
 		//move towards the game object that is the target
 		float step = CameraMoveSpeed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+
 	}
 }

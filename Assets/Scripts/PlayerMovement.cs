@@ -16,13 +16,21 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
 		//theRB = GetComponent<Rigidbody>();
 		controller = GetComponent<CharacterController>();
-	}
+        RenderSettings.ambientLight = Color.black;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 
-		
+		if(Input.GetKey(KeyCode.LeftShift))
+        {
+            MovementSpeed = 40;
+        }
+        else
+        {
+            MovementSpeed = 10;
+        }
 		//moveDirection = new Vector3(Input.GetAxis("Horizontal") * MovementSpeed, moveDirection.y, Input.GetAxis("Vertical") * MovementSpeed);
 		float yStore = moveDirection.y;
 		moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));

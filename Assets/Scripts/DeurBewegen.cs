@@ -9,6 +9,7 @@ public int DeurMoetOpen = 0;
 public int DeurXOpen;
 public int DeurXDicht;
 public string DeurXRichting;
+    public float snelheid = 10;
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Player");
@@ -22,7 +23,7 @@ public string DeurXRichting;
 		{
 			DeurXRichting = "Min";
 			DeurXOpen = 110;
-			DeurXDicht = 119;
+			DeurXDicht = 120;
 		}
 	}
 	
@@ -51,33 +52,33 @@ public string DeurXRichting;
 	{
 		if(gameObject.transform.position.x < DeurXOpen && DeurXRichting == "Plus")
 		{
-		Vector3 tempPlekkie = transform.position;
-		tempPlekkie.x++;
-		transform.position = tempPlekkie;
-		}
+        Vector3 tempPlekkie = transform.position;
+        tempPlekkie.x = tempPlekkie.x + snelheid;
+        transform.localPosition = Vector3.Lerp(transform.localPosition, tempPlekkie, Time.deltaTime);
+        }
 
 		if(gameObject.transform.position.x > DeurXOpen && DeurXRichting == "Min")
 		{
-		Vector3 tempPlekkie = transform.position;
-		tempPlekkie.x--;
-		transform.position = tempPlekkie;
-		}
+        Vector3 tempPlekkie = transform.position;
+        tempPlekkie.x = tempPlekkie.x - snelheid;
+        transform.localPosition = Vector3.Lerp(transform.localPosition, tempPlekkie, Time.deltaTime);
+        }
 	}
 
 	public void DeurDicht(int DeurXDicht)
 	{
 		if(gameObject.transform.position.x < DeurXDicht && DeurXRichting == "Min" )
 		{
-		Vector3 tempPlekkie = transform.position;
-		tempPlekkie.x++;
-		transform.position = tempPlekkie;
-		}
+        Vector3 tempPlekkie = transform.position;
+        tempPlekkie.x = tempPlekkie.x + snelheid;
+        transform.localPosition = Vector3.Lerp(transform.localPosition, tempPlekkie, Time.deltaTime);
+        }
 
 		if(gameObject.transform.position.x > DeurXDicht && DeurXRichting == "Plus")
 		{
-		Vector3 tempPlekkie = transform.position;
-		tempPlekkie.x--;
-		transform.position = tempPlekkie;
-		}
+        Vector3 tempPlekkie = transform.position;
+        tempPlekkie.x = tempPlekkie.x - snelheid;
+        transform.localPosition = Vector3.Lerp(transform.localPosition, tempPlekkie, Time.deltaTime);
+        }
 	}
 }
