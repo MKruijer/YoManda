@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	private Vector3 moveDirection;
 	public float gravityScale;
+    public static float OpLadder;
+    public float heeftCoin = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -19,19 +21,19 @@ public class PlayerMovement : MonoBehaviour {
         RenderSettings.ambientLight = Color.black;
     }
 	
-	// Update is called once per frame
 	void Update () {
 		
-
+        //  Sprint shit
 		if(Input.GetKey(KeyCode.LeftShift))
         {
-            MovementSpeed = 40;
+            MovementSpeed = 20;
         }
         else
         {
             MovementSpeed = 10;
         }
-		//moveDirection = new Vector3(Input.GetAxis("Horizontal") * MovementSpeed, moveDirection.y, Input.GetAxis("Vertical") * MovementSpeed);
+		
+        //  Berekend de bewegen shit aan de hand van de controller inputs
 		float yStore = moveDirection.y;
 		moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
 		moveDirection = moveDirection * MovementSpeed;
@@ -43,10 +45,34 @@ public class PlayerMovement : MonoBehaviour {
 			if(Input.GetButtonDown("Jump"))
 		{
 			moveDirection.y = jumpForce;
+                
 		}
 		}
 
-		moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        //  Klimmen/ladder shit
+
+        if(GameObject.FindGameObjectsWithTag("Ladder").Length == 1)
+        {
+            OpLadder = 1;
+        }
+        else
+        {
+            OpLadder = 0;
+        }
+
+        //  Bewegingen voor wanneer op de ladder
+        if(OpLadder == 1)
+        {
+            moveDirection = (transform.up * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+            moveDirection = moveDirection * 10;
+            //moveDirection.y = moveDirection.y + 2;    dit is een geinige omhoog boost
+        }
+        else
+        {
+            moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        }
+
+        //  Zorgt voor de beweging
 		controller.Move(moveDirection * Time.deltaTime);
 	//.normalized	
 }

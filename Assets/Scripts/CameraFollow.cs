@@ -24,7 +24,6 @@ public class CameraFollow : MonoBehaviour {
 	private float rotX = 0.0f;
 
 
-
     // Use this for initialization
     void Start () {
         Vector3 rot = transform.localRotation.eulerAngles;
@@ -52,10 +51,28 @@ public class CameraFollow : MonoBehaviour {
 
 		Quaternion localRotation = Quaternion.Euler (rotX, rotY, 0.0f);
 		transform.rotation = localRotation;
-        GameObject.Find("Player").transform.rotation = localRotation;
+        //  zorgt ervoor dat je met rechtermuis de camera (tijdelijk) kan veranderen
+        if (!Input.GetMouseButton(1))
+        {
+            GameObject.Find("Zaklampje").transform.rotation = localRotation;
+            GameObject.Find("Player").transform.rotation = Quaternion.Euler(0.0f, rotY, 0.0f);
+            
+        }
+        //  zaklamp aan/uit knop
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (GameObject.Find("Zaklampje").GetComponent<Light>().enabled == false)
+            {
+                GameObject.Find("Zaklampje").GetComponent<Light>().enabled = true;
+            }
+            else
+            {
+                GameObject.Find("Zaklampje").GetComponent<Light>().enabled = false;
+            }
+        }
 
 
-	}
+    }
 
 	void LateUpdate () {
 		CameraUpdater ();
@@ -67,7 +84,7 @@ public class CameraFollow : MonoBehaviour {
 
 		//move towards the game object that is the target
 		float step = CameraMoveSpeed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+		transform.position = Vector3.Lerp (transform.position, target.position, step);
 
 	}
 }
