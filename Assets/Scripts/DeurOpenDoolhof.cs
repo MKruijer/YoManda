@@ -4,39 +4,75 @@ using UnityEngine;
 
 public class DeurOpenDoolhof : MonoBehaviour
 {
-
-    GameObject player;
-    public int DeurMoetOpen = 0;
-    public float DeurYOpen;
-    public float DeurYDicht;
-    public string DeurYRichting;
-    public float snelheid = 10;
-    public GameObject DeurZelfe;
+    private int DeurMoetOpen = 0;
+    public float DeurCoordsOpen;
+    public string AxisParent;
+    private float Position;
+    public float SnelheidInvoer;
+    private float snelheid;
+    private string richtingOpen;
+    public bool RequiresUnlocker;
+    
     // Use this for initialization
     void Start()
     {
-        player = GameObject.Find("Player");
+        if(RequiresUnlocker)
+        {
+            
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (DeurMoetOpen == 1)
+        //  Selecteerd de juiste axis en geeft de positie.
+        if (AxisParent == "X")
         {
-            DeurOpen(DeurYOpen);
+            Position = gameObject.transform.GetChild(0).transform.localPosition.x;
+            snelheid = SnelheidInvoer / gameObject.transform.localScale.x;
         }
-        if (DeurMoetOpen == 0)
+        if (AxisParent == "Y")
         {
-            DeurDicht(DeurYDicht);
+            Position = gameObject.transform.GetChild(0).transform.localPosition.y;
+            snelheid = SnelheidInvoer / gameObject.transform.localScale.x;
+        }
+        if (AxisParent == "Z")
+        {
+            Position = gameObject.transform.GetChild(0).transform.localPosition.z;
+            snelheid = SnelheidInvoer / gameObject.transform.localScale.x;
+        }
+        //  Activeren van de beweging functie
+        if (DeurMoetOpen == 1 && DeurCoordsOpen > 0)
+        {
+            DeurPlus(DeurCoordsOpen, Position, AxisParent, snelheid);
+        }
+        if (DeurMoetOpen == 1 && DeurCoordsOpen < 0)
+        {
+            DeurMin(DeurCoordsOpen, Position, AxisParent, snelheid);
+        }
+        if (DeurMoetOpen == 0 && DeurCoordsOpen < 0)
+        {
+            DeurPlus(0, Position, AxisParent, snelheid);
+        }
+        if (DeurMoetOpen == 0 && DeurCoordsOpen > 0)
+        {
+            DeurMin(0, Position, AxisParent, snelheid);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin == 1)
+        if (RequiresUnlocker == true)
+        {
+            if (GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin == 1)
+            {
+                DeurMoetOpen = 1;
+            }
+        }
+        if(RequiresUnlocker == false)
         {
             DeurMoetOpen = 1;
-        }
+        }  
     }
 
     private void OnTriggerExit(Collider other)
@@ -44,38 +80,46 @@ public class DeurOpenDoolhof : MonoBehaviour
         DeurMoetOpen = 0;
     }
 
-    public void DeurOpen(float DeurYOpen)
+    public void DeurPlus(float DeurCoordsDoel, float Position, string Axis, float snelheid)
     {
-        if (DeurZelfe.transform.position.y < DeurYOpen && DeurYRichting == "Plus")
+        if (Position < DeurCoordsDoel)
         {
-            Vector3 tempPlekkie = DeurZelfe.transform.position;
-            tempPlekkie.y = tempPlekkie.y + snelheid;
-            DeurZelfe.transform.localPosition = Vector3.Lerp(DeurZelfe.transform.localPosition, tempPlekkie, Time.deltaTime);
-        }
-
-        if (DeurZelfe.transform.position.y > DeurYOpen && DeurYRichting == "Min")
-        {
-            Vector3 tempPlekkie = DeurZelfe.transform.position;
-            tempPlekkie.y = tempPlekkie.y - snelheid;
-            DeurZelfe.transform.position = Vector3.Lerp(DeurZelfe.transform.localPosition, tempPlekkie , Time.deltaTime);
-            //transform.position = tempPlekkie;
+            Vector3 tempPlekkie = gameObject.transform.GetChild(0).transform.localPosition;
+            if (Axis == "X")
+            {
+                tempPlekkie.x = tempPlekkie.x + snelheid;
+            }
+            if (Axis == "Y")
+            {
+                tempPlekkie.y = tempPlekkie.y + snelheid;
+            }
+            if (Axis == "Z")
+            {
+                tempPlekkie.z = tempPlekkie.z + snelheid;
+            }
+            gameObject.transform.GetChild(0).transform.localPosition = Vector3.Lerp(gameObject.transform.GetChild(0).transform.localPosition, tempPlekkie, Time.deltaTime);
         }
     }
 
-    public void DeurDicht(float DeurYDicht)
+    public void DeurMin(float DeurCoordsDoel, float Position, string Axis, float snelheid)
     {
-        if (DeurZelfe.transform.position.y < DeurYDicht && DeurYRichting == "Min")
+        
+        if (Position > DeurCoordsDoel)
         {
-            Vector3 tempPlekkie = DeurZelfe.transform.position;
-            tempPlekkie.y = tempPlekkie.y + snelheid;
-            DeurZelfe.transform.localPosition = Vector3.Lerp(DeurZelfe.transform.localPosition, tempPlekkie, Time.deltaTime);
-        }
-
-        if (DeurZelfe.transform.position.y > DeurYDicht && DeurYRichting == "Plus")
-        {
-            Vector3 tempPlekkie = DeurZelfe.transform.position;
-            tempPlekkie.y = tempPlekkie.y - snelheid;
-            DeurZelfe.transform.localPosition = Vector3.Lerp(DeurZelfe.transform.localPosition, tempPlekkie, Time.deltaTime);
+            Vector3 tempPlekkie = gameObject.transform.GetChild(0).transform.localPosition;
+            if (Axis == "X")
+            {
+                tempPlekkie.x = tempPlekkie.x - snelheid;
+            }
+            if (Axis == "Y")
+            {
+                tempPlekkie.y = tempPlekkie.y - snelheid;
+            }
+            if (Axis == "Z")
+            {
+                tempPlekkie.z = tempPlekkie.z - snelheid;
+            }
+            gameObject.transform.GetChild(0).transform.localPosition = Vector3.Lerp(gameObject.transform.GetChild(0).transform.localPosition, tempPlekkie, Time.deltaTime);
         }
     }
 }

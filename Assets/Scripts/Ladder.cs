@@ -15,7 +15,11 @@ public class Ladder : MonoBehaviour {
         {
             transform.parent.gameObject.GetComponent<Renderer>().material.color = Color.green;
         }
-	}
+        if (Unlocked == 0)
+        {
+            transform.parent.gameObject.GetComponent<Renderer>().material.color = Color.red;
+        }
+    }
 
 
     private void OnTriggerEnter(Collider other)
