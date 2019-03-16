@@ -15,7 +15,7 @@ public class CameraCollision : MonoBehaviour {
 	void Awake () {
 		dollyDir = transform.localPosition.normalized;
 		distance = transform.localPosition.magnitude;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,11 +25,11 @@ public class CameraCollision : MonoBehaviour {
 
 		if (Physics.Linecast (transform.parent.position, desiredCameraPos, out hit)) {
 			distance = Mathf.Clamp ((hit.distance * 0.87f), minDistance, maxDistance);
-				
-				} else {
-					distance = maxDistance;
-				}
 
+        } else {
+					distance = maxDistance;
+        }
+        
 				transform.localPosition = Vector3.Lerp (transform.localPosition, dollyDir * distance, Time.deltaTime * smooth);
 	}
 }
