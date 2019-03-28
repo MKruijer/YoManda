@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
         //  Berekend de bewegen shit aan de hand van de controller inputs
 		float yStore = moveDirection.y;
 		moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
-		moveDirection = moveDirection * MovementSpeed;
+        moveDirection = moveDirection * MovementSpeed;
 		moveDirection.y = yStore;
 
 		if(controller.isGrounded)	//zorgt ervoor dat je niet oneindig kan springen maar 1x totdat je weer de grond aanraakt.
