@@ -34,7 +34,7 @@ public class LoadLevelLock : MonoBehaviour {
         Button2.SetActive(false);
         Button3.SetActive(false);
         Load(SlotNr);
-        SaveLevel.SlotNr = SlotNr;
+        SaveLevel.SlotNrStatic = SlotNr;
         if(LevelsUnlocked == 1)
         {
             Button1.SetActive(true);

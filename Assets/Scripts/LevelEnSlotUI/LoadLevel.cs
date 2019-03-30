@@ -10,11 +10,14 @@ public class LoadLevel : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         SceneManager.LoadScene(LevelName);
+        Time.timeScale = 1;
     }
 
     //voor wanneer je met een button naar een ander level wilt
     public void ButtonNextLevel()
     {
+
         SceneManager.LoadScene(LevelName);
+        Time.timeScale = 1;
     }
 }

@@ -23,5 +23,6 @@ public class ResumeLastLevel : MonoBehaviour {
         int Score = PlayerSafe["Score"];
         //laad de scene
         SceneManager.LoadScene(LevelsUnlocked);
+        Time.timeScale = 1;
     }
 }

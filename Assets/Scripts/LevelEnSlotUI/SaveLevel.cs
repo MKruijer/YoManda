@@ -7,19 +7,7 @@ using UnityEngine;
 public class SaveLevel : MonoBehaviour {
     public int Score;
     public int LevelUnlocked;
-    public static int SlotNr;
-
-    public void Save(int SlotNr, int LevelsUnlocked)
-    {
-        //opslaan van gegevens
-        JSONObject PlayerSafe = new JSONObject();
-        PlayerSafe.Add("LevelsUnlocked", LevelsUnlocked);
-        PlayerSafe.Add("Score", Score);
-
-        //path
-        string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
-        File.WriteAllText(path, PlayerSafe.ToString());
-    }
+    public static int SlotNrStatic;
 
     private void Start()
     {
@@ -33,8 +21,32 @@ public class SaveLevel : MonoBehaviour {
         }
     }
 
+    public void Save(int SlotNr, int LevelsUnlocked)
+    {
+        //opslaan van gegevens
+        JSONObject PlayerSafe = new JSONObject();
+        PlayerSafe.Add("LevelsUnlocked", LevelsUnlocked);
+        PlayerSafe.Add("Score", Score);
+
+        //path
+        string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
+        File.WriteAllText(path, PlayerSafe.ToString());
+    }
+
+    public void TestSave (int SlotNr)
+    {
+        //opslaan van gegevens
+        JSONObject PlayerSafe = new JSONObject();
+        PlayerSafe.Add("LevelsUnlocked", LevelUnlocked);
+        PlayerSafe.Add("Score", Score);
+
+        //path
+        string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
+        File.WriteAllText(path, PlayerSafe.ToString());
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        Save(SlotNr, LevelUnlocked);
+        Save(SlotNrStatic, LevelUnlocked);
     }
 }

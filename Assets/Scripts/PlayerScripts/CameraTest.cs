@@ -27,15 +27,9 @@ public class CameraTest : MonoBehaviour {
         //pakt de inputs van de muis
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
-        //pakt de inputs van een controller, het is niet erg nodig maar wel geinig extraatje
-        float inputX = Input.GetAxis("RightStickHorizontal");
-        float inputZ = Input.GetAxis("RightStickVertical");
-        //combineerd beide inputs
-        finalInputX = inputX + mouseX;
-        finalInputZ = inputZ + mouseY;
         //zorgt dat de beweging vloeiend gaat, door middel van sensitivity en de time.deltaTime om het realistisch te maken aan een echte muisbeweging
-        rotY += finalInputX * inputSensitivity * Time.deltaTime;
-        rotX += finalInputZ * inputSensitivity * Time.deltaTime;
+        rotY += mouseX * inputSensitivity * Time.deltaTime;
+        rotX += mouseY* inputSensitivity * Time.deltaTime;
         //Mathf.Clamp zorgt ervoor dat je maar een bepaalde hoeveelheid kan draaien. Door dit toe tepassen zorgen we ervoor dat je tot maximaal boven je zelf kan draaien en niet cirkels om je heen gaat draaien met de camera.
         rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
         //zet de rotatie in veriable, Quaternion is een soort float voor rotaties
@@ -44,6 +38,7 @@ public class CameraTest : MonoBehaviour {
         //Nu pas je de verandering toe op de camerea/draaing
         if (!Input.GetMouseButton(1))
         {
+            //dit is om te zorgen dat je via de rechtermuis je camera vrij kan bewegen.
             GameObject.Find("Player").transform.rotation = localRotation_Player;
         }
         GameObject.Find("CameraLookat").transform.rotation = localRotation_Camera;
