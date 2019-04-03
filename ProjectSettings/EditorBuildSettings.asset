@@ -9,21 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/HomeScreen.unity
     guid: f8ace0364e0f1354595e0eab9913f479
   - enabled: 1
-    path: Assets/__DELETED_GUID_Trash/d34e598c3d8df79479e0e763e1f94b62
-    guid: d34e598c3d8df79479e0e763e1f94b62
+    path: Assets/Scenes/level_1.unity
+    guid: 19a85a85aba612e4bbce871c6348c48c
   - enabled: 1
     path: Assets/Scenes/level_2.unity
     guid: bbbb135c3cedbac46aaed293da8e2ab0
   - enabled: 1
-    path: Assets/__DELETED_GUID_Trash/b7f4ed5c3a5bd6f4aaf18cd4471e7553
-    guid: b7f4ed5c3a5bd6f4aaf18cd4471e7553
+    path: Assets/Scenes/level_3.unity
+    guid: 5ad5a14ac6accb840bd26968b62ef07d
   - enabled: 1
-    path: Assets/__DELETED_GUID_Trash/bf109257c71313947b915ad7f0858124
-    guid: bf109257c71313947b915ad7f0858124
+    path: Assets/Scenes/level_4.unity
+    guid: 4baa081272c29b14d87aa8db5125a79b
   - enabled: 1
     path: Assets/Scenes/level_5.unity
     guid: fe37e9df6deccd942b22406889636547
   - enabled: 1
     path: Assets/Scenes/level_6.unity
     guid: 66512b85c0b091d4d8f7e02f0ec87960
+  - enabled: 1
+    path: Assets/Scenes/level_7.unity
+    guid: 7a6fab518766660449ea7570c4d0cca9
   m_configObjects: {}

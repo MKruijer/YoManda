@@ -8,14 +8,18 @@ public class LoadLevelLock : MonoBehaviour {
 
     private int LevelsUnlocked;
     private int Score;
-    GameObject Button1; 
     GameObject Button2;
     GameObject Button3;
+    GameObject Button4;
+    GameObject Button5;
+    GameObject Button6;
     // Use this for initialization
     void Start () {
-        Button1 = GameObject.Find("Level1");
         Button2 = GameObject.Find("Level2");
         Button3 = GameObject.Find("Level3");
+        Button4 = GameObject.Find("Level4");
+        Button5 = GameObject.Find("Level5");
+        Button6 = GameObject.Find("Level6");
     }
 
     public void Load(int SlotNr)
@@ -30,25 +34,37 @@ public class LoadLevelLock : MonoBehaviour {
 
     public void SelectSlot(int SlotNr)
     {
-        Button1.SetActive(false);
-        Button2.SetActive(false);
-        Button3.SetActive(false);
         Load(SlotNr);
         SaveLevel.SlotNrStatic = SlotNr;
         if(LevelsUnlocked == 1)
         {
-            Button1.SetActive(true);
+            Button2.SetActive(false);
+            Button3.SetActive(false);
+            Button4.SetActive(false);
+            Button5.SetActive(false);
+            Button6.SetActive(false);
         }
         if (LevelsUnlocked == 2)
         {
-            Button1.SetActive(true);
-            Button2.SetActive(true);
+            Button3.SetActive(false);
+            Button4.SetActive(false);
+            Button5.SetActive(false);
+            Button6.SetActive(false);
         }
         if (LevelsUnlocked == 3)
         {
-            Button1.SetActive(true);
-            Button2.SetActive(true);
-            Button3.SetActive(true);
+            Button4.SetActive(false);
+            Button5.SetActive(false);
+            Button6.SetActive(false);
+        }
+        if (LevelsUnlocked == 4)
+        {
+            Button5.SetActive(false);
+            Button6.SetActive(false);
+        }
+        if (LevelsUnlocked == 5)
+        {
+            Button6.SetActive(false);
         }
     }
 }

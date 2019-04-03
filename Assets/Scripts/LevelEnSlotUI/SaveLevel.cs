@@ -23,27 +23,24 @@ public class SaveLevel : MonoBehaviour {
 
     public void Save(int SlotNr, int LevelsUnlocked)
     {
-        //opslaan van gegevens
-        JSONObject PlayerSafe = new JSONObject();
-        PlayerSafe.Add("LevelsUnlocked", LevelsUnlocked);
-        PlayerSafe.Add("Score", Score);
+        //checkt of de save file niet een hoger level opheeft geslagen
+        string pathLoad = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
+        string JsonStringLoad = File.ReadAllText(pathLoad);
+        JSONObject PlayerSafeLoad = (JSONObject)JSON.Parse(JsonStringLoad);
+        if(LevelsUnlocked > PlayerSafeLoad["LevelsUnlocked"])
+        {
+            //opslaan van gegevens
+            JSONObject PlayerSafe = new JSONObject();
+            PlayerSafe.Add("LevelsUnlocked", LevelsUnlocked);
+            PlayerSafe.Add("Score", Score);
 
-        //path
-        string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
-        File.WriteAllText(path, PlayerSafe.ToString());
+            //path
+            string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
+            File.WriteAllText(path, PlayerSafe.ToString());
+        }
     }
 
-    public void TestSave (int SlotNr)
-    {
-        //opslaan van gegevens
-        JSONObject PlayerSafe = new JSONObject();
-        PlayerSafe.Add("LevelsUnlocked", LevelUnlocked);
-        PlayerSafe.Add("Score", Score);
 
-        //path
-        string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
-        File.WriteAllText(path, PlayerSafe.ToString());
-    }
 
     private void OnTriggerEnter(Collider other)
     {

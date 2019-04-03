@@ -150,7 +150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -368, y: -23}
+  m_AnchoredPosition: {x: 367, y: -23}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5513205
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009880893a8890c4cbc924c50e1a8de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: Doolhoflevel2
+  LevelName: level_5
 --- !u!114 &5513206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,7 +964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -368, y: 145}
+  m_AnchoredPosition: {x: 367, y: 145}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &293061332
@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009880893a8890c4cbc924c50e1a8de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: Doolhoflevel1
+  LevelName: level_4
 --- !u!114 &293061333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009880893a8890c4cbc924c50e1a8de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: YoManda
+  LevelName: level_3
 --- !u!114 &372656582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,7 +2240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009880893a8890c4cbc924c50e1a8de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: Doolhoflevel1
+  LevelName: level_1
 --- !u!114 &727266035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3414,7 +3414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -368, y: -186}
+  m_AnchoredPosition: {x: 367, y: -186}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1286809996
@@ -3429,7 +3429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009880893a8890c4cbc924c50e1a8de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: YoManda
+  LevelName: level_6
 --- !u!114 &1286809997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4105,7 +4105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009880893a8890c4cbc924c50e1a8de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: Doolhoflevel2
+  LevelName: level_2
 --- !u!114 &1611066321
 MonoBehaviour:
   m_ObjectHideFlags: 0
