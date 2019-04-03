@@ -13,6 +13,6 @@ public class Collectable : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin = 1;
+        GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin++;
     }
 }

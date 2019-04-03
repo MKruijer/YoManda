@@ -11,15 +11,11 @@ public class DeurOpenDoolhof : MonoBehaviour
     public float SnelheidInvoer;
     private float snelheid;
     private string richtingOpen;
-    public bool RequiresUnlocker;
+    public float RequiresUnlocker;
     
     // Use this for initialization
     void Start()
     {
-        if(RequiresUnlocker)
-        {
-            
-        }
     }
 
     // Update is called once per frame
@@ -62,14 +58,14 @@ public class DeurOpenDoolhof : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (RequiresUnlocker == true)
+        if (RequiresUnlocker > 0)
         {
-            if (GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin == 1)
+            if (GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin >= RequiresUnlocker)
             {
                 DeurMoetOpen = 1;
             }
         }
-        if(RequiresUnlocker == false)
+        if(RequiresUnlocker == 0)
         {
             DeurMoetOpen = 1;
         }  
