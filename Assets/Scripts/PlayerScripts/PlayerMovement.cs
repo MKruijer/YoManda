@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float gravityScale;
     public static float OpLadder;
     public float heeftCoin = 0;
+    private bool kanSpringen;
 
 	// Use this for initialization
 	void Start () {
@@ -48,11 +49,14 @@ public class PlayerMovement : MonoBehaviour {
         if (controller.isGrounded)
 		{
 			moveDirection.y = 0f;
-			if(Input.GetButtonDown("Jump"))
+            kanSpringen = true;
+        }
+        if (Input.GetButtonDown("Jump") && kanSpringen)
 		{
+            kanSpringen = false;
 			moveDirection.y = jumpForce;
                 
-		}
+		
 		}
 
         //  Klimmen/ladder shit
