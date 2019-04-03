@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraTest : MonoBehaviour {
     private float mouseX;
@@ -12,8 +13,10 @@ public class CameraTest : MonoBehaviour {
     public float inputSensitivity = 150f;
     public float clampAngle = 76.0f;
     // Use this for initialization
+    public Slider SensitivtySlider;
     void Start () {
         //pakt de basis rotatie zodat als de player gedraait in het inspawnen staat dat de code nog goed werkt
+        SensitivtySlider = GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>();
         Vector3 rot = transform.localRotation.eulerAngles;
         rotY = rot.y;
         rotX = rot.x;
@@ -24,6 +27,7 @@ public class CameraTest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        inputSensitivity = SensitivtySlider.value*3;
         //pakt de inputs van de muis
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
