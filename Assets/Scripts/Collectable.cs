@@ -12,7 +12,10 @@ public class Collectable : MonoBehaviour {
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-        GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin++;
+        if (other.name == GameObject.Find("Player").name)
+        {
+            Destroy(gameObject);
+            GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin++;
+        }
     }
 }

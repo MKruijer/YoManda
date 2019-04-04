@@ -58,22 +58,28 @@ public class DeurOpenDoolhof : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (RequiresUnlocker > 0)
+        if (other.name == GameObject.Find("Player").name)
         {
-            if (GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin >= RequiresUnlocker)
+            if (RequiresUnlocker > 0)
+            {
+                if (GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin >= RequiresUnlocker)
+                {
+                    DeurMoetOpen = 1;
+                }
+            }
+            if (RequiresUnlocker == 0)
             {
                 DeurMoetOpen = 1;
             }
         }
-        if(RequiresUnlocker == 0)
-        {
-            DeurMoetOpen = 1;
-        }  
     }
 
     private void OnTriggerExit(Collider other)
     {
-        DeurMoetOpen = 0;
+        if (other.name == GameObject.Find("Player").name)
+        {
+            DeurMoetOpen = 0;
+        }
     }
 
     public void DeurPlus(float DeurCoordsDoel, float Position, string Axis, float snelheid)

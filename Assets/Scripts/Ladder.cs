@@ -24,14 +24,20 @@ public class Ladder : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Unlocked == 1)
+        if (other.name == GameObject.Find("Player").name)
         {
-            transform.gameObject.tag = "Ladder";
+            if (Unlocked == 1)
+            {
+                transform.gameObject.tag = "Ladder";
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        transform.gameObject.tag = "Untagged";
+        if (other.name == GameObject.Find("Player").name)
+        {
+            transform.gameObject.tag = "Untagged";
+        }
     }
 }

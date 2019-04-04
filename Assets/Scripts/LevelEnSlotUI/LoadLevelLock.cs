@@ -7,7 +7,6 @@ using UnityEngine;
 public class LoadLevelLock : MonoBehaviour {
 
     private int LevelsUnlocked;
-    private int Score;
     GameObject Button2;
     GameObject Button3;
     GameObject Button4;
@@ -29,11 +28,15 @@ public class LoadLevelLock : MonoBehaviour {
         JSONObject PlayerSafe = (JSONObject)JSON.Parse(JsonString);
         //Pakt de gegevens uit de file
         LevelsUnlocked = PlayerSafe["LevelsUnlocked"];
-        Score = PlayerSafe["Score"];
     }
 
     public void SelectSlot(int SlotNr)
     {
+        Button2.SetActive(true);
+        Button3.SetActive(true);
+        Button4.SetActive(true);
+        Button5.SetActive(true);
+        Button6.SetActive(true);
         Load(SlotNr);
         SaveLevel.SlotNrStatic = SlotNr;
         if(LevelsUnlocked == 1)

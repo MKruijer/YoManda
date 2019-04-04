@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class ResumeLastLevel : MonoBehaviour {
 
+    public static int SlotNrStatic;
     public void LoadLastSave()
     {
         //sorteerd de saveslots en geeft de meest recent gewijzigde
@@ -20,9 +21,25 @@ public class ResumeLastLevel : MonoBehaviour {
         //halt de gegevens uit de file
         JSONObject PlayerSafe = (JSONObject)JSON.Parse(JsonString);
         int LevelsUnlocked = PlayerSafe["LevelsUnlocked"];
-        int Score = PlayerSafe["Score"];
+        int score = PlayerSafe["score"];
         //laad de scene
         SceneManager.LoadScene(LevelsUnlocked);
         Time.timeScale = 1;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == GameObject.Find("Player").name)
+        {
+            //opslaan van gegevens
+            JSONObject PlayerSafe = new JSONObject();
+            PlayerSafe.Add("LevelsUnlocked", 7);
+            PlayerSafe.Add("score", 10);
+
+            //path
+            string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNrStatic + ".json";
+            File.WriteAllText(path, PlayerSafe.ToString());
+        }
     }
 }

@@ -9,9 +9,12 @@ public class LoadLevel : MonoBehaviour {
     //voor wanneer de player een NextLevelObject aanraakt
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(LevelName);
-        Time.timeScale = 1;
-        GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin = 0;
+        if (other.name == GameObject.Find("Player").name)
+        {
+            SceneManager.LoadScene(LevelName);
+            Time.timeScale = 1;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin = 0;
+        }
     }
 
     //voor wanneer je met een button naar een ander level wilt

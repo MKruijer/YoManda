@@ -5,20 +5,26 @@ using System.IO;
 using UnityEngine;
 
 public class SaveLevel : MonoBehaviour {
-    public int Score;
+    public int score;
     public int LevelUnlocked;
     public static int SlotNrStatic;
 
     private void Start()
     {
-        //creeër de save directory en files
-        if (!System.IO.File.Exists(Application.persistentDataPath + "/Saves/SaveFileSlot1.json"))
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/Saves"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
-            //hierdoor is slot1 als eerste als je resume doet
-            Save(2, 1);
-            Save(1, 1);
         }
+        //creeër de save directory en files
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/Saves/SaveFileSlot2.json"))
+        {
+            TestSave(2);
+        }
+        if (!System.IO.File.Exists(Application.persistentDataPath + "/Saves/SaveFileSlot1.json"))
+        {
+            TestSave(1);
+        }
+         
     }
 
     public void Save(int SlotNr, int LevelsUnlocked)
@@ -27,23 +33,49 @@ public class SaveLevel : MonoBehaviour {
         string pathLoad = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
         string JsonStringLoad = File.ReadAllText(pathLoad);
         JSONObject PlayerSafeLoad = (JSONObject)JSON.Parse(JsonStringLoad);
-        if(LevelsUnlocked > PlayerSafeLoad["LevelsUnlocked"])
+        JSONObject PlayerSafe = new JSONObject();
+        if (LevelsUnlocked > PlayerSafeLoad["LevelsUnlocked"])
         {
-            //opslaan van gegevens
-            JSONObject PlayerSafe = new JSONObject();
+            //opslaan van level
             PlayerSafe.Add("LevelsUnlocked", LevelsUnlocked);
-            PlayerSafe.Add("Score", Score);
+        }
+        else
+        {
+            PlayerSafe.Add("LevelsUnlocked", PlayerSafeLoad["LevelsUnlocked"]);
+        }
+        if (score > PlayerSafeLoad["score"])
+            {
+                PlayerSafe.Add("score", score);
+            }
+            else
+            {
+                PlayerSafe.Add("score", PlayerSafeLoad["score"]);
+            }
 
             //path
             string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
             File.WriteAllText(path, PlayerSafe.ToString());
-        }
+        
     }
+    //TestSave is voor het deleten en maken van de saves
+   public void TestSave(int SlotNr)
+    {
+            //opslaan van gegevens
+            JSONObject PlayerSafe = new JSONObject();
+            PlayerSafe.Add("LevelsUnlocked", 1);
+            PlayerSafe.Add("score", score);
 
+            //path
+            string path = Application.persistentDataPath + "/Saves/SaveFileSlot" + SlotNr + ".json";
+            File.WriteAllText(path, PlayerSafe.ToString());
+    }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        Save(SlotNrStatic, LevelUnlocked);
+        if (other.name == GameObject.Find("Player").name)
+        {
+            Save(SlotNrStatic, LevelUnlocked);
+        }
     }
 }

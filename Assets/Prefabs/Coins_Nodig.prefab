@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4309209504662865637
+--- !u!1 &2642870034153235440
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4305979509242177183}
-  - component: {fileID: 4303527841816745403}
-  - component: {fileID: 4295811073557676443}
-  - component: {fileID: 4262708058063259187}
-  - component: {fileID: 4309582069279103058}
-  - component: {fileID: 4309582069279103150}
+  - component: {fileID: 2642870034153235444}
+  - component: {fileID: 2642870034153235443}
+  - component: {fileID: 2642870034153235442}
+  - component: {fileID: 2642870034153235441}
   m_Layer: 0
-  m_Name: NextLevel
+  m_Name: Coins_Nodig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4305979509242177183
+--- !u!4 &2642870034153235444
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4309209504662865637}
+  m_GameObject: {fileID: 2642870034153235440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: 1.06, z: 49.13}
-  m_LocalScale: {x: 3.1875267, y: 1.4165, z: 1}
+  m_LocalPosition: {x: -112.66, y: 4.94, z: -0.14}
+  m_LocalScale: {x: 2.9659586, y: 2.3937454, z: 1.1534}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4303527841816745403
+--- !u!33 &2642870034153235443
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4309209504662865637}
-  m_Mesh: {fileID: 4300000, guid: 6cfb80454aee73840b7e1a3bb551ea1b, type: 3}
---- !u!23 &4295811073557676443
+  m_GameObject: {fileID: 2642870034153235440}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2642870034153235442
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4309209504662865637}
+  m_GameObject: {fileID: 2642870034153235440}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -60,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e5f86d26d25f494d8aed8163ca5f612, type: 2}
+  - {fileID: 2100000, guid: 00319b9a7051a804aa9facee0505f127, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,44 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4262708058063259187
+--- !u!64 &2642870034153235441
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4309209504662865637}
+  m_GameObject: {fileID: 2642870034153235440}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 6cfb80454aee73840b7e1a3bb551ea1b, type: 3}
---- !u!114 &4309582069279103058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4309209504662865637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e558d90c41adfe64eaaeab800faa92ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  LevelUnlocked: 0
---- !u!114 &4309582069279103150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4309209504662865637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009880893a8890c4cbc924c50e1a8de8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelName: Doolhoflevel2
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}

@@ -14,6 +14,9 @@ public class Unlocker : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject.Find(UnlockableLadder).GetComponent<Ladder>().Unlocked = 1;
+        if (other.name == GameObject.Find("Player").name)
+        {
+            GameObject.Find(UnlockableLadder).GetComponent<Ladder>().Unlocked = 1;
+        }
     }
 }
