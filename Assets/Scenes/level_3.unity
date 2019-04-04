@@ -1612,7 +1612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1538076891302954, guid: 7a2be3f837d31f84e870a78183243815, type: 3}
       propertyPath: m_Name
-      value: Ladderklim5
+      value: Ladderklim4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a2be3f837d31f84e870a78183243815, type: 3}
@@ -9557,7 +9557,7 @@ PrefabInstance:
     - target: {fileID: 114334444476206268, guid: 167884c6107237544a3f16ad72e5cf62,
         type: 3}
       propertyPath: Ladder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 167884c6107237544a3f16ad72e5cf62, type: 3}
@@ -9887,15 +9887,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.763945
       objectReference: {fileID: 0}
-    - target: {fileID: 4309582069279103058, guid: 8a80b1e1338d6864ba4146dc3ed949bf,
-        type: 3}
-      propertyPath: LevelUnlocked
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4309582069279103150, guid: 8a80b1e1338d6864ba4146dc3ed949bf,
         type: 3}
       propertyPath: LevelName
       value: level_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309582069279103058, guid: 8a80b1e1338d6864ba4146dc3ed949bf,
+        type: 3}
+      propertyPath: LevelUnlocked
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a80b1e1338d6864ba4146dc3ed949bf, type: 3}
