@@ -11,8 +11,15 @@ public class LoadLevel : MonoBehaviour {
     {
         if (other.name == GameObject.Find("Player").name)
         {
-            SceneManager.LoadScene(LevelName);
             Time.timeScale = 1;
+            if (LevelName == "HomeScreen")
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Time.timeScale = 0;
+            }
+            SceneManager.LoadScene(LevelName);
+            
             GameObject.Find("Player").GetComponent<PlayerMovement>().heeftCoin = 0;
         }
     }
